@@ -1,74 +1,90 @@
 object casa {
   var cuidador = tom
-   var suciedad = 0
-   var quilombero = elQuilombero
+  var suciedad = 0
+  var quilombero = null
 
-   method suciedad (suciedadCasa){
+  method suciedad (suciedadCasa){
     suciedad = suciedadCasa
-   }
-   
-   method cuidador(elCuidador){
-    cuidador = elCuidador 
-   }
+  }
 
-   method quilombero(elQuilombero){
+  method menosSuciedad(cantidad){
+    suciedad -= cantidad
+  }
+
+  method masSuciedad(cantidad){
+    suciedad += cantidad
+  }
+   
+  method cuidador(elCuidador){ //setter 
+    cuidador = elCuidador 
+  }
+  method cuidador() = cuidador //getter
+
+  method quilombero(elQuilombero){
     quilombero = elQuilombero
-   }
+  }
 }
 
 object tom {
   var energia = 0
+
   method velocidad () = 5 + energia / 10
 
   method dormir(){
     energia += 50
   }
 
-  method atrapaQuilombero (quilombero) {
-    if (velocidad > quilombero.velocidad){
-      return true
-    } else return false 
-    }
+  method atrapaQuilombero (quilombero) = self.velocidad() > quilombero.velocidad()
 
     method limpiar(){
       energia -= 40
-      casa.suciedad(casa.suciedad()-100)
+      casa.menosSuciedad(100)
       }
     
 
-  method interrumpirSueño(){
+  method interrumpirSueno(){
     energia -= 20
   }
 }
 
 object jerry {
-  var peso = 50 
-  var velocidad =10 - peso
+  var peso = 50
+  
+  method velocidad() =10 - peso
+
   method hacerQuilombo(){
-    casa.suciedad += 110
+    casa.masSuciedad(110)
+    self.robarComida()
   }
 
-  method robarcomida (){
+  method robarComida (){
     peso +=1
   }
 
 }
 
 object tuffy {
-  var velocidad = 10
+  method velocidad() = 10
 
   method hacerQuilombo(){
-
+    casa.cuidador().interrumpirSueno()
   }
   }
 
 object robocat{
   method limpiar (){
-    casa.suciedad = 0
+    casa.suciedad(0)
   }
 
   method atraparQuilombero(quilombero)= true
 
+  method dormir(){
+    //no modifica nada?
+  }
+
+  method interrumpirSueno(){
+    //no hace nada
+  }
 
 }
 
