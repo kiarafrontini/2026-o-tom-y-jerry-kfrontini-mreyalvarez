@@ -113,3 +113,39 @@ object pandilla{
 
 }
 
+object spike{
+  var energia= 1000
+
+  method limpiar(){
+      energia -= 10
+      casa.menosSuciedad(200)
+      }
+
+  method atraparQuilombero(quilombero)= true
+
+  method interrumpirSueno(){
+    energia -= 50
+  }
+
+  method dormir(){
+    energia += 60
+  }
+
+  method velocidad () = energia.div(2)
+
+}
+
+object tyke{
+  var energia = 500
+
+  method velocidad()= energia.div(3)
+
+  method haceCaca(){
+    casa.masSuciedad(75)
+  }
+
+  method hacerQuilombo(){
+    casa.masSuciedad(25)
+    casa.cuidador().interrumpirSueno()
+  }
+}
