@@ -23,6 +23,7 @@ object casa {
   method quilombero(elQuilombero){
     quilombero = elQuilombero
   }
+
 }
 
 object tom {
@@ -84,6 +85,30 @@ object robocat{
 
   method interrumpirSueno(){
     //no hace nada
+  }
+
+}
+
+object pandilla{
+  const pandilleros = []
+
+  method agregarPandillero( pandillero){
+    pandilleros.add(pandillero)
+  }
+
+  method velocidad(){
+    return self.masLento().velocidad().div(2)
+  }
+
+  method masLento(){
+    return pandilleros.min({p => p.velocidad()})
+  }
+
+  method hacerQuilombo(){
+    pandilleros.forEach({p => p.hacerQuilombo()})
+    if(pandilleros.size()> 3){
+      casa.cuidador().interrumpirSueno()
+    }
   }
 
 }
