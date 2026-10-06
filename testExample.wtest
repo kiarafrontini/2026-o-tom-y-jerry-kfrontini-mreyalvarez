@@ -1,9 +1,23 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "test de tom"{
+  test "tom atrapa a quilombero"{
+    assert.that(tom.atrapaQuilombero(jerry))
   }
 
+  test "tom NO atrapa al quilombero"{
+    assert.notThat(tom.atrapaQuilombero(tyke))
+  }
+}
+
+describe "test de la casa"{
+  test "jerry haciendo quilombo"{
+    jerry.hacerQuilombo()
+    assert.equals(110, casa.suciedad())
+  }
+
+  test "tuffy haciendo quilombo"{
+    tuffy.hacerQuilombo()
+    assert.equals(-10, tom.energia())
+  }
 }

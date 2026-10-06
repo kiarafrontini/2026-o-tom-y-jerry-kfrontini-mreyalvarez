@@ -3,7 +3,9 @@ object casa {
   var suciedad = 0
   var quilombero = null
 
-  method suciedad (suciedadCasa){
+  method suciedad ()= suciedad
+
+  method suciedad(suciedadCasa){
     suciedad = suciedadCasa
   }
 
@@ -27,7 +29,9 @@ object casa {
 }
 
 object tom {
-  var energia = 0
+  var energia = 10
+
+  method energia()= energia 
 
   method velocidad () = 5 + energia / 10
 
@@ -49,7 +53,7 @@ object tom {
 }
 
 object jerry {
-  var peso = 50
+  var peso = 5
   
   method velocidad() =10 - peso
 
